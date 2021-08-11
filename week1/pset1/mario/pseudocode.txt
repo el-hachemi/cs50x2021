@@ -1,0 +1,29 @@
+prompt the user for the height
+if the input is not an integer 
+return the height must be an integer and reprompt
+if the height is less then 1 
+return message the height must be at least the number one or greater
+if the height is greater than 8 
+return the maximum height is 8 or less
+else 
+draw the pyramide
+loop over the 0 to the number minus 1
+for every number print a n+1 hash until it's done
+
+
+
+
+
+I had to write the steps into ea different file and describe the action step by
+step.
+
+It's really a good idea to write the action step by step!!!!
+
+It's a must do!!!
+
+
+The mario.c contain a pyramide that begin from the left
+The mario_f.c contain a the same pyramide but that seem to begin from the
+right, a tric made by adding spaces to each row.
+The mario2.c contain the two pyramides with splited with two spaces between
+them.

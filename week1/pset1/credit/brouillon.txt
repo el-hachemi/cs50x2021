@@ -1,0 +1,9 @@
+
+    int total = sum_pair + sum_odd;
+    // The two first numbers are d[length] and d[length - 1] 
+    if (total % 10 == 0 )
+    {
+       printf("Invalid\n");
+    }
+    if (total % 10 == 0 && the two first number 
+}

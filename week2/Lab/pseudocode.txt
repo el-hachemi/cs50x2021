@@ -1,0 +1,86 @@
+The operation is split into two steps:
+Step1 is to calculating the score of the word for each player.
+Step2 is to compare the 2 scores for evaluating who's won.
+
+Step1:
+How to calculate the score?
+
+For example the word "Code" like in the example; a string is an array of
+characters and each character have a point.
+
+To extract the characters is by indexing and iterating over the string from 0 to
+the length of the variable strlen(word1):
+word[0] = C;
+word[1] = o;
+word[2] = d;
+word[3] = e;
+
+* Character's that are not letters should be given zero points:
+
+Function to calculate the score:
+
+int score = 0;
+
+int arr[26];
+init arr;
+
+int ARR[26];
+init ARR;
+
+ for (int i = 0; i < strleng(word); i++)
+ {
+ int point = 0;
+    for (int j = 0; j < 26; j++)
+    {
+        if ((int) word[i] == arr[j] || word[i] == ARR[j])
+        {
+          point = points[j];
+        }
+    }
+       score += point;
+  }
+  return score;
+
+
+So if the character is not in the array of uppercase or lowercase the given
+point will be 0.
+
+If the character number when we cast it == a number in the array of letters
+the score will be the correspondant point in the array points.
+
+And in each iteration of the POINTS[i] the score will be the sum of the
+elements of the array..
+
+Every letter can be in upper or lower case, by checking if the character is in
+the upper or lower case we can do it in the same iteration by the one of the
+two functions isupper() or islower() functions.
+
+Just decide what format we prefere to work with
+
+Asking for player1 for a word
+asign the word in word1 variable
+
+Step2:
+How to compare the two scores?
+
+The score of a word will be given by calling a function that calculate the
+score, so this function will have an input and an output so the declaration of
+the function will be like that:
+
+int score(word);
+
+So 
+score1 = score(word1)
+And 
+score2 = score(word2)
+
+if (score1 > score2)
+{
+printf("player1 won!\n");
+}
+else if (score1 < score2)
+{
+printf("Player2 won!\n");
+}
+else
+{"Tide\n");
