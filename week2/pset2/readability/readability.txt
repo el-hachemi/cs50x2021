@@ -1,0 +1,53 @@
+The Coleman-liau index is one of such readability text:
+=======================================================
+index = 0.588 * L - 0.296 * S - 15.8
+=======================================================
+Where: 
+L is the average number of letters per 100 words in a text.
+S in the average number of sentences par 100 words in a text.
+
+Input: Text.
+Output: Reading level.
+
+* Getting input:
+-----------------
+This can be doing by the function get_string in the CS50 library.
+
+* Count letters: 
+-----------------
+Must be between a-z to A-Z.
+
+* Count words:
+--------------
+Must be a sequence of letteres separated by space, periode or exlamation,
+interogation mark.
+
+* Count words:
+--------------
+The editors of CS50 assume that any sequence of characters separated by a space
+to be word; So "sister-in-law" should be considered one word, not three.
+
+And they assume will not start or end with a space, and may assume that a
+sentence will not have multiple spaces in a row.
+
+for (int) char in a text a word will be if string[i] = 32 then word++.
+
+* Count sentences:
+------------------
+A senstence is a sequence of characters that ends at only with a period, but
+with an exclamation point aor a question mark as well. But not all periods
+necessarily mean the sentence is over. 
+
+    For instance:
+    "Mr. and Mrs. Dursley, of number four Privet Drive, were proud to say that.."
+    In a single sentence we have three periods!
+
+So that they suggest that we should consider any sequence of characters that
+ends with '.' or a '!' or a '?' to be a sentence (so the above sentence I may
+count that as three sentences).
+
+The only solution for this problem that came in my head for the moment is to
+make exeptions for the words that have periode like "Mr." and "Mrs." if we take
+only the words in the instance. And that can be done by making a condition that
+if the a word is one of the array of the words that contain a period we can
+implement the word variable. 
