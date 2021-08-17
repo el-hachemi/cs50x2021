@@ -37,3 +37,22 @@ else
   return 0;
 }
 }
+
+===============================================================================
+After the code was writed:
+
+0 If there's no argument
+1       print error message
+2 else if ther's more than one argument
+3       print error message
+4 else 
+5       looking at the first element of the first argument 
+6              if isn't a decimal number
+7                     print "Usage: ./caesar key\n"
+8              else
+9                     go back to step 5 for the element n + 1
+10      converting k with atoi() function
+11      prompt the user for plaintext
+12      print "ciphertext: " without new line
+13      looping for every element of plain text 
+               if char is in upper or lower case and is upper
