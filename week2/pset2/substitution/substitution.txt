@@ -1,0 +1,10 @@
+If there isn't an argument or with more than one argument 
+  print error message of my choice 
+  return 1
+If arc < 26 or > 26 or argv[i] is ! alphabetic char or argv[n] is unique
+  print error message of my choice 
+  return 1
+Prompt for plain text with "plaintext: "
+print "ciphertext: " without new line
+print chars of p substitued for the corresponding char in c.
+return 0
