@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<ctype.h>
 #include<stdlib.h>
 #include<cs50.h>
 #include<string.h>
@@ -31,21 +32,43 @@ int main(int argc, string argv[])
           }
       }
       int key = atoi(k);
-      
       // Prompting the user for the plain text
       string p = get_string("plaintext:  ");
       printf("ciphertext: ");
-      
+      int c;
+      // Creating an array of uppercase alphabetics
+      string upper;
+      for (int u = 0; u < 26; u++)
+      {
+	     upper[u] = 65;
+      } 
+      // Creating an array of lowercase alphabetics
+      string lower;
+      for (int l = 0; l < 26; l++)
+      {
+	     lower[l] = 97;
+      } 
       for (int j = 0, N = strlen(p); j < N; j++)
       {
-          if ((p[j] > 64 && p[j] < 91) || (p[j] > 96 && p[j] < 123))
-          {
-               printf("%c", p[j] + key % 26); 
-          }
-          else
-          {
-                printf("%c", p[j]); 
-          }
+	      if (isalpha(p[j]))
+	      {
+		  for (int u = 0; u < 26; u++)
+		  {
+			  if (p[j] == upper[u])
+			  {
+				  c = (upper[u] + key) % 26;
+			  }
+			  else if (p[j] == lower[u])
+			  {
+				  c = (lower[u] + key) % 26;
+			  }
+		  }
+		  printf("%i", c);
+	      }
+	      else
+	      {
+		   printf("%i", p[j]); 
+	      }
       }
       printf("\n");
   }
