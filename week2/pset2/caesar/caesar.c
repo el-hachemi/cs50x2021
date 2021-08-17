@@ -37,17 +37,17 @@ int main(int argc, string argv[])
       // Prompting the user for the plain text
       string p = get_string("plaintext:  ");
       printf("ciphertext: ");
-      // Initializing a cipher char when a string is not necessary
+      // Initializing a cipher char (string is not necessary)
       int c;      
       for (int j = 0, N = strlen(p); j < N; j++)
       {
-          if (((p[j] > 64 && p[j] < 91) || (p[j] > 96 && p[j] < 123)) && isupper(p[j]))
+          if (p[j] > 64 && p[j] < 91)
           {
                p[j] = p[j] - 65;
                c = (p[j] + key) % 26;
                c = c + 65;
           }
-          else if (((p[j] > 64 && p[j] < 91) || (p[j] > 96 && p[j] < 123)) && islower(p[j]))
+          else if (p[j] > 96 && p[j] < 123)
           {
                 p[j] = p[j] - 97;
                 c = (p[j] + key) % 26;
