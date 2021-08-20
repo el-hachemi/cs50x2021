@@ -45,36 +45,34 @@ int main(int argc, string argv[])
        }
    }
    
-    int k; 
-    int key[26];  // Validating the key as "key" variable
+    string k = argv[1];
+    //int key[26];  // Validating the key as "key" variable
     for (int i = 0; i < 26; i++)
     {
         argv[1][i] = toupper(argv[1][i]);
-        k = (argv[1][i] + 65) % 26;
-        key[i] = k;
-        printf("%i\n", key[i]);
+        k[i] = argv[1][i] - 65;
     }
     
     // Prompting the user for the plain text
-    string plain = get_string("plaintext:  ");
-    int p[] = plain;
+    string p = get_string("plaintext:  ");
     printf("ciphertext: ");
 
     // Initializing a cipher char (string is not necessary)
-    int c;      
-    for (int j = 0, n = strlen(plain); j < n; j++)
+    for (int j = 0, n = strlen(p), c, s;j < n; j++)
     {
         if (p[j] > 64 && p[j] < 91)
         {
-            p[j] = p[j] - 65;
-            c = (p[j] + key) % 26;
-            c = c + 65;
+            s = p[j] - 65;
+            //c = (p[j] + k[j]) % 26;
+            //c = c + 65;
+            c = k[s] + 65;
         }
         else if (p[j] > 96 && p[j] < 123)
         {
-            p[j] = p[j] - 97;
-            c = (p[j] + key) % 26;
-            c = c + 97;
+            s = p[j] - 97;
+            //c = (p[j] + k[j]) % 26;
+            //c = c + 97;
+            c = k[s] + 97;
         }
         else
         {
@@ -85,4 +83,3 @@ int main(int argc, string argv[])
     printf("\n");
     return 0;
 }
-
