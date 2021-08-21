@@ -1,0 +1,99 @@
+# WEEK 3 ALGORITHMS
+
+  An algorithm is an step-by-step set of instructions for completing a task.
+
+## LINEAR SEARCH:
+
+  Is an algorithm that we can use to find an element in an array.
+  The idea is to iterate across the array from left to right,
+  searching for a specified element.
+
+### Pseudocode:
+  * Repeat starting at the first element:
+    * If the first element is what you're looking for (the target), stop.
+    * Otherwise, move to the next element.
+
+### Worst-case scenario: O(n)
+  We have to look through the entire array of _n_ elements, either because:
+    The target element is the last oneof the array or
+    Dosen't exist in the array at all.
+
+### Best-case scenario: omega(1)
+  The target element is the first element of the array, and so:
+  We can stop looking immediately after we start.
+
+===============================================================================
+
+## BINARY SEARCH:
+
+  Is an algorithm that we can use to find an element in an array.
+  Unlike linear, it requires a special condition be met beforhand,
+  But it's so much efficient if that condition is, in fact, met.
+  The idea is to divide and conquer, reducing the search area by half each time
+  trying to find a target number.
+
+  In order to levrage this power however, our array must first be sorted,
+  else we cannot make assumptions about the array's content.
+
+### Pseudocode:
+  * Repeat until the (sub)array is of size 0:
+    * Calculate the middle point of the current (sub)array.
+    * If the target is at the middle stop.
+    * Otherwise, if the target is less than what's at the middle, repeat, changing the end point to be just to the left of the middle.
+    * Otherwise, if the target is greater than what's at the middle, repeat, changing the start pointto be just to the right of the middle.
+
+
+### Worst-case scenario: O(log n)
+    We have to divide a list of _n_ elements in half repeatedly to find the target element will be found at the end of the last division or doesn't exist in the array at all.
+
+### Best-case scenario: omega(1)
+  The target element is at the midpoint of the full array, and so:
+  We can stop looking immediately after we start.
+
+===============================================================================
+
+## BUBBLE SORT:
+
+  Is an algorithm that we can use to sort a set of elements in an array.
+
+  The idea is to move higher valued elements generally towards the right and
+  lower value elements generally towards the left.
+
+  In order to levrage this power however, our array must first be sorted,
+  else we cannot make assumptions about the array's content.
+
+### Pseudocode:
+
+  * set swap counter to a non-zero value
+  * Repeat until the swap counter is 0.
+    * Reset swap counter to 0
+    * Look at each adjacent pair
+        * If two adjacent elements are not in order, swap them and add one to  the swap counter
+
+
+### Worst-case scenario: O(n²)
+   The array is in reverse order; we have to "bubble" each of the _n_ elements all the way across the array, and since we can only fully bubble one element into position per pass, we must do this _n_ times
+
+### Best-case scenario: omega(n)
+    The array is perfectly sorted, and we make no swpas on the first pass.
+    
+===============================================================================
+
+## SELECTION SORT:
+
+  Is an algorithm that we can use to sort a set of elements.
+
+  The idea is to find the smallest unsorted element and add it to the end of the sorted list.
+
+### Pseudocode:
+
+  * Repeat until no unsorted elements remain:
+    * Search the unsorted part of the data to find the smallest value.
+    * Swap the smallest found value with the first element of the unsorted part
+
+
+### Worst-case scenario: O(n²)
+   The array is in reverse order; we have to "bubble" each of the _n_ elements all the way across the array, and since we can only fully bubble one element into position per pass, we must do this _n_ times
+
+### Best-case scenario: omega(n²)
+    The array is perfectly sorted, and we make no swpas on the first pass.
