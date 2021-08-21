@@ -1,0 +1,156 @@
+# WEEK 2 ARRAYS
+
+## FUNCTIONS:
+Is one area of computer science, also called:
+
+* Procedures
+* Methodes (Especially in Object orented languages)
+* Subroutines
+
+Its a black box that have a set (0 or more) of inputs and a single output:
+
+### Why use functions:
+  * Organization:
+      Help break up a more complicated problem into more manageable subparts.
+  * Simplification:
+      Smaller components tend to be easier to design, implement and debug.
+  * Reusability:
+       Can be recycled and reuse them.
+
+### How to use Functions:
+
+#### Declarations:
+  Should always go atop your code, before writing main().
+  __return-type__ name(_argument-list_);
+  Argument-list is the comma-separated set of inputs to your function, each of
+  which has a type and a name.
+
+#### Definitions:
+  The definition looks **almost** identical to the declaration:
+  The semicolon at the end indicate a declaration,
+  __return-type__ name(_argument-list_)
+  {
+    ...
+    return 'something';
+  }
+ The return is the output of this function.  
+
+#### Calls:
+    Simply pass it appropriate arguments and assign its return value something of the correct type.
+
+### Function Miscellany:
+* If the function don't take an input we declare it as having a void argument.
+* If the function don't have an output we declare it as having a void return.
+
+===============================================================================
+
+## VARIABLES AND SCOPE
+
+
+### SCOPE:
+  Is characteristic of a variable that defines from which functions that variable may be accessed.
+  There's two primary scopes in C:
+
+#### Local variables:
+  Can only be accessed within the functions in which they are created.
+  For the most part, local variables are **passed by value** in function calls.
+  The **calle** recieved a copy of the passed variable, not the variable itself
+  The variable in the **caller** is unchanged unless over written.
+  
+#### Global variables:
+  Can be accessed by any function in the program. 
+  Because they are declared outside any function.
+  We must be carefull when dealing with global variables.
+  Because any function can access to it and change it.
+
+===============================================================================
+
+## ARRAYS
+
+  Arrays are a fundamental **data structure**, and they are extremely useful!
+  We use arrays to hold values of the same type at contiguous memory locations.
+  **In C the elements of an array are indexed starting from 0.**
+  Array with length 'n': The index of first element is '0' and the last (n-1).
+  C is very lenient, it will not prevent you from going "out of bounds".
+
+### Declarations:
+                  *type* name[**size**];
+
+### Declaration and Initializing:
+
+  * Instantiation syntax:
+      bool truthtable[3] = { false, true, true }; or
+      bool truthtable[] = { false, true, true }; 
+      We don't need in this case to indicate to the compiler the size.
+
+  * Individual element syntax
+      bool truthtable[3];
+      truthtable[0] = false;
+      truthtable[1] = true;
+      truthtable[2] = true;
+      
+
+### Dimensions:
+  
+  Arrays can consiste of more than a single dimension.
+  We can have as many size specifiers as we wish.
+
+              bool battleship[10][10];
+
+  We can choose to think of this as either a 10x10 grid of cells.
+  
+### Arrays and variables:
+
+  We can treat individual elements of arrays as variables.
+  We can't treat entire arrays themselves as variables.
+  We can't assign an array to an other using the assignement operator:
+                                    That is not legal C.
+  Instead we must use a loop to copy over the elemnets one at a time.
+
+### Variable Scope and arrays:
+
+  Most variables in C are **passed by value** in function calls.
+  Arrays do not follow this rule.
+  Rather, they are **passed by reference**.
+  The calle recieves the actual array, not a copy of it.
+
+===============================================================================
+
+## COMMAND-LINE ARGUMENTS:
+
+  To collect **command-line arguments from the user, declare main as:
+
+                int main(int argc, string argv[])
+                {
+
+### argc (argument count):
+
+  This integer-type variable will store the **number** of command-line arguments the user typed when the program was executed.
+
+                command      |        argc
+          -------------------------------------
+              ./greedy       |         1
+          -------------------------------------
+          ./greedy 1024 cs50 |         3
+          -------------------------------------
+
+### argv (argument vector)
+
+  This array of string stores, one string par element.
+  The first element of argv is always found at argv[0].
+  the last element of argv is always found at argv[argc - 1]
+
+            argv indices      |      argv contents
+      -------------------------------------------------
+              argv[0]         |       "./greedy"
+      -------------------------------------------------
+              argv[1]         |         "1024"
+      -------------------------------------------------
+              argv[2]         |         "cs50"
+      -------------------------------------------------
+              argv[3]         |          ???          
+      -------------------------------------------------
+
+  We could probably going to suffer a segmentation fault.
+  So be sure to not overstep the bounds of your arrays particularly argv.
+  Given its high degree of importance in your programs.
