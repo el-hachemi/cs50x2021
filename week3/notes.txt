@@ -97,3 +97,112 @@
 
 ### Best-case scenario: omega(n²)
     The array is perfectly sorted, and we make no swpas on the first pass.
+
+===============================================================================
+
+## RECURION
+
+  The implementation of an algorithm is particularly "elegant" if it solves a problem in a way that is both interesting and easy to visualize.
+
+  The technique of **recursion** is a very common way to implement such an "elegant" solution.
+
+  The definition of recusion is a function that call (invokes) it self.
+
+  The factorial function (n!) equals all of the positive integers less than or equal to n, multiplied together. In terems of programming it's fact(n).
+
+  fact(1) = 1
+  fact(2) = 2 * 1
+  fact(3) = 3 * 2 * 1
+  fact(4) = 4 * 3 * 2 * 1
+  fact(5) = 5 * 4 * 3 * 2 * 1
+  ...
+
+  This can be:
+
+  fact(1) = 1
+  fact(2) = 2 * fact(1)
+  fact(3) = 3 * fact(2)
+  fact(4) = 4 * fact(3) 
+  fact(5) = 5 * fact(4)
+  ...
+
+  So it can be expreressed by:
+
+  fact(n) = n * fact(n - 1)
+
+  This forms the basis for a **recursive definition** of the factorial function
+
+  Every recursive function has two cases that could apply, given any input:
+
+    * The _base case_:
+        Which when trigged will terminate the recursive process.
+
+    * The _recursive case_:
+        Which is where the recursion will occur.
+
+  int fact(int n)                           int fact(int n)
+  {                                         {                                 
+      // base case                              if (n == 1)
+                                                {
+                                                     return 1;
+                                                }
+      // recursive case                         else
+                                                {
+                                                    return n * fact(n - 1);
+                                                }
+  }                                         }
+
+  Because of there's one line into the curly braces we can write:
+
+  int fact(int n)
+  {
+    if (n == 1)
+        return 1;
+    else
+        return n * fact(n - 1);
+  }
+
+  In general but not always, recursive functions replace loops in non-recursive function.
+
+  int fact2(int n)
+  {
+    int product = 1;
+    while(n > 0)
+    {
+        product *= n;
+        n--;
+    }
+    return product;
+  }
+
+  It's possible to have more than one base or recursive case, if the program might recurse or terminate in different ways, depending on the input being passed in.
+
+  ### Multiple base cases:
+    The Fibonacci number sequence is defined as follow:
+      * The first element is 0.
+      * The second element is 1.
+      * The nth element is the sum of the (n-1)th and (n-2)th elements.
+
+  ### Multiple recursive cases:
+    The Collatz conjecture is applies to positive integers and speculates that is always possible to get "back to 1" if you follow these steps:
+      * If *n* is 1, stop.
+      * Otherwise, if *n* is even, repeat this process on n/2.
+      * Otherwise, if *n* is odd, repeat this process on 3n + 1.
+
+===============================================================================
+
+## MERGE SORT:
+
+  The idea is to sort smaller arrays and then combine those arrays together (merge them) in sorted order.
+
+  Merge sort leverages **recursion**
+  
+  ### Pseudocode:
+
+    * Sort the left half of the array (assuming n > 1)
+    * Sort the right half of the array (assuming n > 1)
+    * Merge the two halves together
+    
+  Merge sort is one of the most complicated of the four types of sorts covered.
+
+
