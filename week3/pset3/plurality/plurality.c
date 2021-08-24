@@ -67,13 +67,38 @@ int main(int argc, string argv[])
 bool vote(string name)
 {
     // TODO
-    return false;
+    for (int j = 0; j < candidate_count; j++)
+    {
+        if (strcmp(name, candidates[j].name) == 0)
+        {
+            candidates[j].votes++;
+            return true;
+        }
+        else
+            return false;
+    }
 }
 
 // Print the winner (or winners) of the election
 void print_winner(void)
 {
     // TODO
+    int tmp;
+    int swap;
+    while (swap != 0)
+    {
+        swap = 0;
+        for (int z = 0; z < candidate_count - 2; z++)
+        {
+            if (candidates[z].votes > candidates[z + 1].votes)
+            {
+                tmp = candidates[z].votes;
+                candidates[z + 1].votes = candidates[z].votes;
+                candidates[z + 1].votes = tmp; 
+                swap++;
+            }
+        }
+    }
+    printf("%s\n", candidates[candidate_count - 1].name);      
     return;
 }
-
