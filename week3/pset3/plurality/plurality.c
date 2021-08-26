@@ -66,39 +66,39 @@ int main(int argc, string argv[])
 // Update vote totals given a new vote
 bool vote(string name)
 {
-    // TODO
     for (int j = 0; j < candidate_count; j++)
     {
-        if (strcmp(name, candidates[j].name) == 0)
+        if (strcmp(candidates[j].name, name) == 0)
         {
             candidates[j].votes++;
             return true;
         }
-        else
-            return false;
     }
+    return false;
 }
 
 // Print the winner (or winners) of the election
 void print_winner(void)
 {
     // TODO
-    int tmp;
-    int swap;
-    while (swap != 0)
+    int top_votes = 0;
+
+    //printf("%i %i %i\n", candidates[0].votes, candidates[1].votes, candidates[2].votes); that was for printing and confirming that the count vote is true.
+
+    for (int z = 0; z < candidate_count; z++)
     {
-        swap = 0;
-        for (int z = 0; z < candidate_count - 2; z++)
-        {
-            if (candidates[z].votes > candidates[z + 1].votes)
-            {
-                tmp = candidates[z].votes;
-                candidates[z + 1].votes = candidates[z].votes;
-                candidates[z + 1].votes = tmp; 
-                swap++;
-            }
-        }
+        if (top_votes < candidates[z].votes)
+            top_votes = candidates[z].votes;
+        else
+            top_votes;
     }
-    printf("%s\n", candidates[candidate_count - 1].name);      
-    return;
+    //printf("%i", top_votes); That was to see if I succed to extract the max.
+
+    //printing every candidate who have the same max number of votes.
+    for (int x = 0; x < candidate_count; x++)
+    {
+        if (candidates[x].votes == top_votes)
+            printf("%s", candidates[x].name);
+    } 
+    printf("\n");
 }
