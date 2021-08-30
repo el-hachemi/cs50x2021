@@ -1,0 +1,77 @@
+
+If candidates[i].votes > count_voters / 2
+  printf("%s", candidate[i].name);
+
+else
+    search the min candidates[j].votes
+    candidates[].votes == candidates[].votes != candidates[j].votes
+
+
+tabulate
+===============================================================================
+This was before writing the code.
+Now I'll try to write the code in pseudocede just to try to understand it
+better.
+===============================================================================
+
+Defining the constants with #define:
+
+In general it's used to tell the preprocessor to replace all instances of
+`identifier` in the code with the given text before passing it to the compiler.
+Identifiers can also be defined witout values to be used as compiler flags to
+prevent multiple definitions of the same variables, or to branch on machine
+details that will not change during execution.
+
+===============================================================================
+So:
+
+* determining like constants the max of:
+
+Voters
+Candidates
+
+* defining a data structure by the: typedef struct that englobe the variables:
+string name;
+int votes;
+bool eliminated;
+the data type will be candidate.
+
+* Array of candidates
+candidate candidates[MAX_CANDIDATES];
+
+* Numbers of voters and candidates
+int voter_count;
+int candidate_count;
+
+* Function prototypes
+bool vote(int voter, int rank, string name);
+void tabulate(void);
+bool print_winner(void);
+int find_min(void);
+bool is_tie(int min);
+void eliminate(int min);
+
+* int main(int argc, string argv[])
+{
+  checking that there are arguments;
+
+  populate the array of candidates;
+    candidate_count = argc - 1;
+    checking if the candidate_count are not greater than MAX_CANDIDATES;
+    looping from 0 to n-1 
+      candidates.name = argv + 1;
+      candidates.votes = 0;
+      candidates.eliminated = false;
+      
+  Getting the voter_count variable
+  voter_count = get_int("Number of voters: ")
+  checking that are not greater than MAX_VOTERS
+  
+  looping int i from 0 to voter_count
+    looping from int j from 0 to candidate_count;
+      Query for each rank:
+      string name = get_string("Rank %i: ", j + 1);
+        Checking if the vote is valide
+        if (!vote(i, j, name))
+
+  .............To be continued.
