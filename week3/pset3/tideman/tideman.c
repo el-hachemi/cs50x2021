@@ -152,6 +152,17 @@ void add_pairs(void)
 void sort_pairs(void)
 {
     // TODO
+    int tmp;
+    for (int i = 0; i < pair_count - 1; i++)
+    {
+        if (preferences[pairs[i].winner][pairs[i].loser] < preferences[pairs[i + 1].winner][pairs[i + 1].loser])
+        {
+            tmp = preferences[pairs[i + 1].winner][pairs[i + 1].loser];
+            preferences[pairs[i + 1].winner][pairs[i + 1].loser] = preferences[pairs[i].winner][pairs[i].loser];
+            preferences[pairs[i].winner][pairs[i].loser] = tmp;
+        }
+        printf("%i\n", pairs[i].winner);
+    }
     return;
 }
 
