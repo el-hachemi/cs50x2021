@@ -156,23 +156,17 @@ void sort_pairs(void) // Sort pairs in decreasing order by strength of victory
 {
     // TODO
     // Bubble sort
-    pair tmp[MAX * (MAX - 1) / 2];
-    int swap = -1;
     for (int i = pair_count - 1; i >= 0; i--)
     {
-        //while(swap != 0) // While swap don't equal zero
-        for (int j = pair_count - 1; j > 0; j--)
+        for (int j = 0; j <= i - 1; j++)
         {
-            swap = 0;
-            if (preferences[pairs[i].winner][pairs[j].loser] < preferences[pairs[i + 1].winner][pairs[j + 1].loser])
+            if (preferences[pairs[j].winner][pairs[j].loser] < preferences[pairs[j + 1].winner][pairs[j + 1].loser])
             {
-                tmp[i] = pairs[i];
-                pairs[i] = pairs[i + 1];
-                pairs[i + 1] = tmp[i];
-                swap++;
+                pair tmp = pairs[j];
+                pairs[j] = pairs[j + 1];
+                pairs[j + 1] = tmp;
             }
         }
-        printf("pairs[%i].winner = %i\npairs[%i].loser = %i\nwith preferences[%i][%i] = %i\n", i, pairs[i].winner, i, pairs[i].loser, pairs[i].winner, pairs[i].loser, preferences[pairs[i].winner][pairs[i].loser]);
     }
     return;
 }
