@@ -118,12 +118,9 @@ void record_preferences(int ranks[])
     // TODO
     for (int i = 0; i < candidate_count; i++)
     {
-        for (int j = 0; j < candidate_count; j++)
+        for (int j = i + 1; j < candidate_count; j++)
         {
-            if (i < j)
-            {
-                preferences[ranks[i]][ranks[j]]++;
-            }
+            preferences[ranks[i]][ranks[j]]++;
         }
     }
     return;
@@ -135,17 +132,21 @@ void add_pairs(void)
     // TODO
     for (int i = 0; i < candidate_count; i++)
     {
-        for (int j = 0; j < candidate_count; j++)
+        for (int j = i + 1; j < candidate_count; j++)
         {
-            if (preferences[i][j] > preferences[j][i] && i != j)
+            if (preferences[i][j] > preferences[j][i])
             {
                 pairs[pair_count].winner = i;
                 pairs[pair_count].loser = j;
                 pair_count++;
             }
+            else if (preferences[i][j] < preferences[j][i])
+            {
+                pairs[pair_count].winner = j;
+                pairs[pair_count].loser = i;
+                pair_count++;
+            }
         }
-        printf("pairs[%i].winner = %i\n", i, pairs[i].winner);
-        printf("pairs[%i].loser = %i\n", i, pairs[i].loser);
     }
     return;
 }
@@ -155,23 +156,23 @@ void sort_pairs(void) // Sort pairs in decreasing order by strength of victory
 {
     // TODO
     // Bubble sort
-    int tmp;
+    pair tmp[MAX * (MAX - 1) / 2];
     int swap = -1;
-    for (int i = 0; i < pair_count - 1; i++)
+    for (int i = pair_count - 1; i >= 0; i--)
     {
-        while(swap == 0) // While swap don't equal zero
+        //while(swap != 0) // While swap don't equal zero
+        for (int j = pair_count - 1; j > 0; j--)
         {
-            if (preferences[pairs[i].winner][pairs[i].loser] < preferences[pairs[i + 1].winner][pairs[i + 1].loser])
+            swap = 0;
+            if (preferences[pairs[i].winner][pairs[j].loser] < preferences[pairs[i + 1].winner][pairs[j + 1].loser])
             {
-                swap = 0;
-                tmp = preferences[pairs[i].winner][pairs[i].loser];
-                preferences[pairs[i].winner][pairs[i].loser] = preferences[pairs[i + 1].winner][pairs[i + 1].loser];
-                preferences[pairs[i + 1].winner][pairs[i + 1].loser] = tmp;
+                tmp[i] = pairs[i];
+                pairs[i] = pairs[i + 1];
+                pairs[i + 1] = tmp[i];
                 swap++;
             }
         }
-    printf("%i\n", preferences[pairs[i].winner][pairs[i].loser]);
-    printf("%i\n", pairs[i].winner);
+        printf("pairs[%i].winner = %i\npairs[%i].loser = %i\nwith preferences[%i][%i] = %i\n", i, pairs[i].winner, i, pairs[i].loser, pairs[i].winner, pairs[i].loser, preferences[pairs[i].winner][pairs[i].loser]);
     }
     return;
 }
