@@ -175,6 +175,9 @@ void sort_pairs(void) // Sort pairs in decreasing order by strength of victory
 void lock_pairs(void)
 {
     // TODO
+    // For that we just make the pair the locked[pairs[i].winner][pairs[i].loser] = true.
+    // To make a cycle we must never have the first 'i' to become a 'j'.
+    // So when j == i exit.
     return;
 }
 
